@@ -13,6 +13,12 @@ Feature: Time Logs Functionality
     When User fills up all the require details
     And User clicks on save button
     Then User is redirect on Time Logs page
+    Given User is on time logs page
+    When User clicks on the drop-down menu link
+    And User clicks on the Edit menu
+    And User updates a data
+    And clicks on save button
+    Then Updated data is display
     Given User is on the time Logs page
     When User clicks on the log time button
     And User clicks on the Save button

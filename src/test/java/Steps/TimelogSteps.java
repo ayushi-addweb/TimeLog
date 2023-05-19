@@ -28,7 +28,8 @@ public class TimelogSteps {
 
     WebDriver driver;
 
-    public TimelogSteps(Hooks hooks) {
+    public TimelogSteps(Hooks hooks)
+    {
         this.driver = hooks.getDriver();
     }
 
@@ -146,7 +147,7 @@ public class TimelogSteps {
         File source0 = screenshot0.getScreenshotAs(OutputType.FILE);
         Thread.sleep(2000);
         //Path to the location to save screenshot
-        FileHandler.copy(source0, new File("/Users/addweb/Downloads/Testing 2 2/SS/SuccessfullyLogged.png"));
+        FileHandler.copy(source0, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/SuccessfullyLogged.png"));
         Thread.sleep(2000);
         System.out.println("Added Time log Page Screenshot is captured");
     }
@@ -169,7 +170,57 @@ public class TimelogSteps {
             System.out.println("Data Not Matched");
         }
     }
+    @Given("User is on time logs page")
+    public void userIsOnTimeLogsPage()
+    {
+        System.out.println("User is on time log page for edit");
 
+    }
+    @When("User clicks on the drop-down menu link")
+    public void userClicksOnTheDropDownMenuLink() throws InterruptedException
+    {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/a/i")).click();
+        Thread.sleep(1000);
+        System.out.println("drop-down icon");
+    }
+
+    @And("User clicks on the Edit menu")
+    public void userClicksOnTheEditMenu() throws InterruptedException
+    {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/div/a[2]")).click();
+        Thread.sleep(2000);
+    }
+
+    @And("User updates a data")
+    public void userUpdatesAData() throws InterruptedException
+    {
+        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[2]/div/textarea")).click();
+        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[2]/div/textarea")).sendKeys(" Updated");
+        Thread.sleep(1000);
+    }
+
+    @And("clicks on save button")
+    public void clicksOnSaveButton() throws InterruptedException, IOException {
+        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/div/button[1]")).click();
+        Thread.sleep(3000);
+    }
+
+    @Then("Updated data is display")
+    public void updatedDataIsDisplay() throws InterruptedException, IOException
+    {
+        System.out.println("Data is Updated successfully");
+        //Use TakesScreenshot method to capture screenshot
+        TakesScreenshot screenshot00 = (TakesScreenshot)driver;
+        Thread.sleep(2000);
+        //Saving the screenshot in desired location
+        File source00 = screenshot00.getScreenshotAs(OutputType.FILE);
+        Thread.sleep(2000);
+        //Path to the location to save screenshot
+        FileHandler.copy(source00, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/UpdatedData.png"));
+        Thread.sleep(2000);
+        System.out.println("Updated Time log Page Screenshot is captured");
+        Thread.sleep(1000);
+    }
     @Given("User is on the time Logs page")
     public void userIsOnTheTimeLogsPage()
     {
@@ -187,7 +238,8 @@ public class TimelogSteps {
     }
 
     @And("User clicks on the Save button")
-    public void userClicksOnTheSaveButton() throws InterruptedException {
+    public void userClicksOnTheSaveButton() throws InterruptedException
+    {
         System.out.println("User clicks on Save button");
         WebDriverWait wait = new WebDriverWait(driver, ofSeconds(100));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/div/div/button[1]")));
@@ -200,13 +252,13 @@ public class TimelogSteps {
     {
         System.out.println("Validation is appearing");
         //Use TakesScreenshot method to capture screenshot
-        TakesScreenshot screenshot1 = (TakesScreenshot)driver;
+        TakesScreenshot screenshot1 = (TakesScreenshot) driver;
         Thread.sleep(2000);
         //Saving the screenshot in desired location
         File source1 = screenshot1.getScreenshotAs(OutputType.FILE);
         Thread.sleep(2000);
         //Path to the location to save screenshot
-        FileHandler.copy(source1, new File("/Users/addweb/Downloads/Testing 2 2/SS/Validation.png"));
+        FileHandler.copy(source1, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/Validation.png"));
         Thread.sleep(2000);
         System.out.println("Validation appeared on Time log Page Screenshot is captured");
     }
