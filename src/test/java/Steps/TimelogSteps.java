@@ -34,26 +34,30 @@ public class TimelogSteps {
     }
 
     @Given("User is on dashboard page")
-    public void user_is_on_dashboard_page() {
+    public void user_is_on_dashboard_page()
+    {
         System.out.println("User is on dashboard page");
     }
 
     @When("User clicks on Work menu")
-    public void user_clicks_on_work_menu() throws InterruptedException {
+    public void user_clicks_on_work_menu() throws InterruptedException
+    {
         System.out.println("User clicks on Work menu");
-        WebDriverWait wait = new WebDriverWait(driver, ofSeconds(60));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/a")));
-        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/a")).click();
         Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, ofSeconds(60));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#sideMenuScroll > ul > li:nth-child(5) > a"))); ///html/body/aside/div[2]/div[2]/ul/li[5]/a
+        driver.findElement(By.cssSelector("#sideMenuScroll > ul > li:nth-child(5) > a")).click();
+        Thread.sleep(4000);
     }
 
     @And("User clicks on Time Logs sub menu")
-    public void user_clicks_on_time_logs_sub_menu() throws InterruptedException {
+    public void user_clicks_on_time_logs_sub_menu() throws InterruptedException
+    {
         System.out.println("User clicks on Time Logs sub menu");
         WebDriverWait wait = new WebDriverWait(driver, ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/div/a[4]")));
         driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/div/a[4]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
 
     @Then("User is redirect on the time Logs page")
@@ -63,7 +67,8 @@ public class TimelogSteps {
     }
 
     @Given("User is on time log page")
-    public void userIsOnTimeLogPage() {
+    public void userIsOnTimeLogPage()
+    {
         System.out.println("User is on time log page");
     }
 
@@ -306,8 +311,9 @@ public class TimelogSteps {
     @And("User clicks on Delete menu")
     public void userClicksOnDeleteMenu() throws InterruptedException {
         driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/div/a[3]")).click();
+        Thread.sleep(500);
         driver.findElement(By.xpath("/html/body/div[8]/div/div[3]/button[1]")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     @Then("User is able to delete the data")
@@ -323,7 +329,6 @@ public class TimelogSteps {
         FileHandler.copy(source4, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/Delete.png"));
         Thread.sleep(2000);
         System.out.println("Deleted appeared on Time log Page Screenshot is captured");
-        driver.findElement(By.cssSelector("#close-task-detail > span > svg")).click();
         Thread.sleep(1000);
     }
 }
