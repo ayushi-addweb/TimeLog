@@ -202,7 +202,7 @@ public class TimelogSteps {
     @And("clicks on save button")
     public void clicksOnSaveButton() throws InterruptedException, IOException {
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div/div/button[1]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
 
     @Then("Updated data is display")
@@ -220,6 +220,32 @@ public class TimelogSteps {
         Thread.sleep(2000);
         System.out.println("Updated Time log Page Screenshot is captured");
         Thread.sleep(1000);
+    }
+    @Given("User is on to the time logs page")
+    public void userIsOnToTheTimeLogsPage()
+    {
+        System.out.println("User is on to the time logs page");
+    }
+
+    @When("User clicks on drop-down menu link")
+    public void userClicksOnDropDownMenuLink() throws InterruptedException {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/a/i")).click();
+        Thread.sleep(1000);
+        System.out.println("drop-down icon");
+    }
+
+    @And("User clicks on View menu")
+    public void userClicksOnViewMenu() throws InterruptedException
+    {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/div/a[1]")).click();
+        Thread.sleep(2000);
+    }
+
+    @Then("User is able to view the details")
+    public void userIsAbleToViewTheDetails() throws InterruptedException {
+        System.out.println("User is able to view the details");
+        driver.findElement(By.cssSelector("#close-task-detail > span")).click();  //Cross icon for closing view page
+        Thread.sleep(2000);
     }
     @Given("User is on the time Logs page")
     public void userIsOnTheTimeLogsPage()
@@ -261,5 +287,43 @@ public class TimelogSteps {
         FileHandler.copy(source1, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/Validation.png"));
         Thread.sleep(2000);
         System.out.println("Validation appeared on Time log Page Screenshot is captured");
+        driver.findElement(By.cssSelector("#close-task-detail > span > svg")).click();
+        Thread.sleep(1000);
+    }
+    @Given("User is on to Time Logs page")
+    public void userIsOnToTimeLogsPage()
+    {
+        System.out.println("User is on to Time Logs page");
+    }
+
+    @When("User clicks on to the drop-down menu link")
+    public void userClicksOnToTheDropDownMenuLink() throws InterruptedException {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/a/i")).click();
+        Thread.sleep(1000);
+        System.out.println("drop-down icon");
+    }
+
+    @And("User clicks on Delete menu")
+    public void userClicksOnDeleteMenu() throws InterruptedException {
+        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/div/a[3]")).click();
+        driver.findElement(By.xpath("/html/body/div[8]/div/div[3]/button[1]")).click();
+        Thread.sleep(2000);
+    }
+
+    @Then("User is able to delete the data")
+    public void userIsAbleToDeleteTheData() throws InterruptedException, IOException {
+        System.out.println("Deleted");
+        //Use TakesScreenshot method to capture screenshot
+        TakesScreenshot screenshot4 = (TakesScreenshot) driver;
+        Thread.sleep(2000);
+        //Saving the screenshot in desired location
+        File source4 = screenshot4.getScreenshotAs(OutputType.FILE);
+        Thread.sleep(2000);
+        //Path to the location to save screenshot
+        FileHandler.copy(source4, new File("/Users/addweb/Downloads/Testing 2 2 2/SS/Delete.png"));
+        Thread.sleep(2000);
+        System.out.println("Deleted appeared on Time log Page Screenshot is captured");
+        driver.findElement(By.cssSelector("#close-task-detail > span > svg")).click();
+        Thread.sleep(1000);
     }
 }

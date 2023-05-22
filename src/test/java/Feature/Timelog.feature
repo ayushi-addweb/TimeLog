@@ -19,7 +19,16 @@ Feature: Time Logs Functionality
     And User updates a data
     And clicks on save button
     Then Updated data is display
+    Given User is on to the time logs page
+    When User clicks on drop-down menu link
+    And User clicks on View menu
+    Then User is able to view the details
     Given User is on the time Logs page
     When User clicks on the log time button
     And User clicks on the Save button
     Then User is able to see a validations
+    Given User is on to Time Logs page
+    When User clicks on to the drop-down menu link
+    And User clicks on Delete menu
+    Then User is able to delete the data
+
