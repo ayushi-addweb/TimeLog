@@ -22,8 +22,8 @@ public class Hooks
         System.setProperty("web-driver.chrome.driver", "/Users/addweb/Downloads/Testing 2 2 2/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-
         //options.setHeadless(true);  //This Method accepts boolean as arg If it's "False" then it will run as a Headed mode means normal and If it's "True" then it will run as a Headless mode
+        options.setHeadless(false);
         driver = new ChromeDriver(options);
         //options.addArguments("--headless=new");
 
